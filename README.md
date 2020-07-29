@@ -8,7 +8,7 @@ The input json file should be formatted as below:
 ```
 [
     {
-        "name": "Layer_X", // optional
+        "name": "Layer_X",
         "fillcolor": "rgb(166,206,227)", // if missed, we will assign a random color to each layer
         "size": [1, 2 ,3 ,4 ,5 ,6 ] // all layers' size must be equal in length
     },
