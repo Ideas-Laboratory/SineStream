@@ -4,7 +4,7 @@ The source code of the implementation of 'SineStream: Improving the Readability 
 
 <img src="figures/main.png?raw=true" alt="Screenshot of the MainPage.">
 
-The input json file should be formatted ad below: 
+The input json file should be formatted as below: 
 ```
 [
     {
