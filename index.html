@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 新 Bootstrap4 核心 CSS 文件-->
+    <link rel="stylesheet" href="./stylesheets/bootstrap.min.css">
+    <script src="./javascript/lib/jquery.min.js"></script>
+    <script src="./javascript/lib/popper.min.js"></script>
+    <script src="./javascript/lib/bootstrap.min.js"></script>
+    <script src="./javascript/lib/d3.v5.min.js"></script>
+    <!-- 自定义代码 -->
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <script src="./javascript/lib/buchuan1023.js"></script>
+    <script src="./javascript/Util_getData.js"></script>
+    <script src="./javascript/Layout_Ours.js"></script>
+    <script src="./javascript/Util_DrawGraph.js"></script>
+    <script src="./javascript/Util_getLabelsData.js"></script>
+    <script src="./javascript/Util_AssignmentColor.js"></script>
+    <script src="./javascript/Global.js"></script>
+    <script src="./javascript/_Entrance_.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+<div class="container-fluid">
+
+    <div class="row fixed-top bg-white">
+        <div class="col-md-10 pl-5">
+            <div class="btn-group mr-2 mt-2">
+                <div class="custom-file ">
+                    <input type="file" class="custom-file-input" id="uploadFile" name="uploadFile"
+                           onchange="changeFileName()">
+                    <label class="custom-file-label" id="uploadFileName" for="uploadFile">Choose
+                        Your File</label>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-secondary mr-0 w-50"
+                        onclick="readFile()">Upload and Draw
+                </button>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="btn-group mr-2 mt-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary mr-0 w-50 h-75" disabled>SineStream
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary mr-0 w-50">
+                    <a href="https://vislab.wang/">
+                        VisLab.Wang
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row cpage mt-5">
+        <div class="col-md-2  fixed-top mt-5">
+            <ul class="nav flex-column mt-2">
+                <li class="nav-item mt-2">
+                    <button class="btn btn-primary text-center w-100" onclick="readLocalData(0)">Draw Local Data</button>
+                </li>
+                <li class="nav-item mt-2">
+                    <h5>
+                        C in Gaussian Weight
+                    </h5>
+                </li>
+                <li class="nav-item mt-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="CType_0" onclick="changeCType(0)">
+                        <label class="custom-control-label" for="CType_0">Arithemtic Mean</label>
+                    </div>
+                </li>
+                <li class="nav-item mt-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="CType_1" onclick="changeCType(1)">
+                        <label class="custom-control-label" for="CType_1">Median</label>
+                    </div>
+                </li>
+                <li class="nav-item mt-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="CType_2" onclick="changeCType(2)">
+                        <label class="custom-control-label" for="CType_2">Arithemtic Mean</label>
+                    </div>
+                </li>
+                <li class="nav-item mt-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="CType_3" onclick="changeCType(3)">
+                        <label class="custom-control-label" for="CType_3">Geometric Mean</label>
+                    </div>
+                </li>
+                <li class="nav-item mt-2">
+                    <h5>
+                        Thickness Weight Type
+                    </h5>
+                </li>
+                <li class="nav-item mt-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="ThicknessWeightType_0"
+                               onclick="changeThicknessWeightType(0)">
+                        <label class="custom-control-label" for="ThicknessWeightType_0">Max</label>
+                    </div>
+                </li>
+                <li class="nav-item mt-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="ThicknessWeightType_1"
+                               onclick="changeThicknessWeightType(1)">
+                        <label class="custom-control-label" for="ThicknessWeightType_1">Arithemtic Mean</label>
+                    </div>
+                </li>
+                <li class="nav-item mt-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="ThicknessWeightType_2"
+                               onclick="changeThicknessWeightType(2)">
+                        <label class="custom-control-label" for="ThicknessWeightType_2">Geometric Mean</label>
+                    </div>
+                </li>
+                <li class="nav-item mt-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="ThicknessWeightType_3"
+                               onclick="changeThicknessWeightType(3)">
+                        <label class="custom-control-label" for="ThicknessWeightType_3">Harmonic Mean</label>
+                    </div>
+                </li>
+
+                <li class="nav-item mt-2">
+                    <h5>
+                        Length Weight
+                    </h5>
+                </li>
+
+                <li class="nav-item mt-2">
+                    <label for="lengthThreshold" id="lengthThresholdLabel">threshold value</label>
+                    <input type="range" class="custom-range" min="5" max="30" step="1" id="lengthThreshold" value=0
+                           onchange="changeLengthThreshold(this.value)">
+                </li>
+
+                <li class="nav-item mt-2">
+                    <h5>
+                        Distance Function
+                    </h5>
+                </li>
+                <li class="nav-item mt-2">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="whetherUseThicknessWeight"
+                               onclick="change_WhetherUseThicknessWeight()">
+                        <label class="custom-control-label" for="whetherUseThicknessWeight">ThicknessWeight</label>
+                    </div>
+                </li>
+                <li class="nav-item mt-2">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="whetherUseLengthWeight"
+                               onclick="change_WhetherUseLengthWeight()">
+                        <label class="custom-control-label" for="whetherUseLengthWeight">LengthWeight</label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10 offset-2 p-0 pt-3">
+            <div id="div_streamgraph">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+    window.onload = function () {
+        run()
+    }
+</script>
+
+</html>

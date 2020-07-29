@@ -1,0 +1,10 @@
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+h5{
+    margin-bottom: 0;
+}
