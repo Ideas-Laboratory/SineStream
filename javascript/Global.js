@@ -3,12 +3,6 @@ let DATA_PATH = []
 //the data will be processed
 DATA_PATH = [
     './data/demo.json', // the teaser (default paremater)
-    // './data/demo2.json', // the order compare (cType=mean; thickness = max; length threhold value is 1/12 or smaller;)
-    // './data/demo3.json', // the process of hc ordering (default paremater)
-    // './data/demo4.json', // the baseline compare (default paremater)
-    // './data/case_1.json', // the case 1 (cType=median; thickness = mean; length threhold value is 1/5;)
-    // './data/case_2.json', // the case 2 (default paremater)
-    // './data/case_3.json', // the case 3 (default paremater)
 ]
 
 let initialLayers = [], //存储所有的数据
